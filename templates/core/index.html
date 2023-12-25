@@ -18,11 +18,52 @@
             padding: 20px;
             text-align: center;
         }
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            background-color: #0056b3; /* Slightly darker than header background */
+            margin-bottom: 10px;
+        }
+        .nav-container a {
+            padding: 10px 20px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+        .nav-container a:hover {
+            background-color: #004080; /* Darker color on hover */
+        }
         section {
             padding: 20px;
             display: flex;
             justify-content: space-evenly;
             flex-wrap: wrap;
+            border-bottom: 2px solid #ddd; /* Line separating cards */
+            margin-top: -10px; /* Move cards closer to the header */
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            padding: 15px;
+            text-align: center;
+            width: 300px;
+            min-height: 150px; /* Adjust the minimum height */
+            transition: box-shadow 0.3s; /* Add transition for smooth effect */
+            position: relative;
+            overflow: hidden;
+        }
+        .card a {
+            text-decoration: none;
+            color: #333; /* Set the text color for the link within the card */
+            display: block;
+            height: 100%;
+        }
+        .card:hover {
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
         }
         footer {
             background-color: #007bff;
@@ -38,6 +79,7 @@
             width: 300px;
             border: none;
             border-radius: 5px;
+            margin-bottom: 10px; /* Add margin to create space between search bar and buttons */
         }
         button {
             padding: 10px 20px;
@@ -68,19 +110,50 @@
             <input type="text" placeholder="Search all supplies...">
             <button type="submit">Search</button>
         </form>
+        
+        <!-- Horizontal Navigation Menu -->
+        <div class="nav-container">
+            <a href="paints">Paints</a>
+            <a href="canvasses">Canvasses</a>
+            <a href="brushes">Brushes</a>
+            <a href="drawEssentials">Drawing Essentials</a>
+        </div>
     </header>
 
-    
-
+    <!-- Featured Items Cards -->
     <section>
-        <ul>
-            <li><a href="paints">Paints</a></li>
-            <li><a href="canvasses">Canvasses</a></li>
-            <li><a href="brushes">Brushes</a></li>
-            <li><a href="drawingSupp">Drawing Supplies</a></li>
-        </ul>
-    </section>
+        <div class="card">
+            <a href="toSpecifiedFeaturedPaintSet">
+                <h2>Featured Paint Set</h2>
+                <p>High-quality paints for vibrant artwork.</p>
+                <button>View Details</button>
+            </a>
+        </div>
 
+        <div class="card">
+            <a href="toSpecifiedFeaturedCanvas">
+                <h2>Canvas Collection</h2>
+                <p>Explore our premium canvasses for your masterpieces.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedBrush">
+                <h2>Artist Brushes</h2>
+                <p>Find the perfect brushes for your artistic needs.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedDrawingEssential">
+                <h2>Drawing Essentials</h2>
+                <p>Discover essential drawing supplies for your projects.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+    </section>
 
     <footer>
         <p>Thank you for choosing us. We appreciate your business and look forward to serving you.</p>
