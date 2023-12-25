@@ -99,6 +99,34 @@
         li {
             margin: 0 10px;
         }
+
+        .promotional-banner {
+             overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            display: flex;
+            align-items: center; /* Align buttons vertically in the middle */
+        }       
+        .banner-container {
+            width: 100%; /* Full width of the parent */
+            overflow: hidden;
+        }
+        .banners {
+            display: flex;
+            width: 300%; /* Adjusted to accommodate three banners */
+            transition: transform 0.5s ease;
+        }
+        .banner-text {
+            flex: 0 0 33.333%; /* Each banner takes up one-third of the container */
+        }
+        .banner-button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            margin: 0 10px; /* Add spacing between buttons and banners */
+        }
     </style>
 </head>
 <body>
@@ -118,7 +146,35 @@
             <a href="brushes">Brushes</a>
             <a href="drawEssentials">Drawing Essentials</a>
         </div>
+
+        <!-- Promotional Banner -->
+        <div class="promotional-banner">
+
+            <!-- Left Button -->
+            <button class="banner-button" onclick="scrollBanners('left')">&#9664;</button>
+
+            <div class="banner-container">
+                <div class="banners">
+                    <div class="banner-text">
+                        <img src="placeholder1.jpg" alt="Banner 1">
+                    </div>
+                    <div class="banner-text">
+                        <img src="placeholder2.jpg" alt="Banner 2">
+                    </div>
+                    <div class="banner-text">
+                        <img src="placeholder3.jpg" alt="Banner 3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Button -->
+            <button class="banner-button" onclick="scrollBanners('right')">&#9654;</button>
+
+        </div>
+
+
     </header>
+
 
     <!-- Featured Items Cards -->
     <section>
@@ -160,5 +216,24 @@
 
         <p>&copy; 2023 Art Store. All rights reserved.</p>
     </footer>
+    <script>
+        // JavaScript for banner navigation
+        let currentIndex = 0;
+        const bannerContainer = document.querySelector('.banners');
+        const totalBanners = document.querySelectorAll('.banner-text').length;
+
+        function scrollBanners(direction) {
+            const bannerWidth = bannerContainer.offsetWidth / totalBanners;
+
+            if (direction === 'left') {
+                currentIndex = (currentIndex - 1 + totalBanners) % totalBanners;
+            } else if (direction === 'right') {
+                currentIndex = (currentIndex + 1) % totalBanners;
+            }
+
+            const translateValue = -currentIndex * bannerWidth;
+            bannerContainer.style.transform = `translateX(${translateValue}px)`;
+        }
+    </script>
 </body>
 </html>
