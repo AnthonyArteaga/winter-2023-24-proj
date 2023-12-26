@@ -1,0 +1,62 @@
+{% load static %}
+
+<!--basically the same header and footer as home page(aka index.html) without the banners-->
+<!--the idea behind partials is that we can extend them so we dont have to remake reoccuring html/css/js code-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Store</title>
+
+    <!--using some django notation to refernce where the homePage CSS is; will do this many times when referencing a directory-->
+    <link rel="stylesheet" href="{% static 'CSS/homePageStyles.css' %}">
+
+</head>
+<body>
+    <header>
+        <h1>Art Store</h1>
+        <p>Discover and buy all your artwork needs!</p>
+
+        <form action="#" method="get">
+            <input type="text" id="search-bar" placeholder="Search all supplies...">
+            <button type="submit">Search</button>
+        </form>
+        
+        <!-- Horizontal Navigation Menu -->
+        <div class="nav-container" id="navbar">
+            <a href="paints">Paints</a>
+            <a href="canvasses">Canvasses</a>
+            <a href="papers">Papers</a>
+            <a href="brushes">Brushes</a>
+            <a href="scultping">Sculpting</a>
+            <a href="officeSupp">Office Supplies</a>
+            <a href="drawEssentials">Drawing Essentials</a>
+        </div>
+
+    </header>
+
+    {% block content%}
+
+    <!--if an html file extends this base, this header and footer will be used, all we need to focus on is the body
+    
+        To extend this html, our first line MUST be: {% extends 'partials/base.html' %}
+
+        only then can we type in the start and end blocks in the new html to tell the program where it is
+    -->
+
+    {% endblock content%}
+
+    <footer>
+        <p>Thank you for choosing us. We appreciate your business and look forward to serving you.</p>
+
+        <p>&copy; 2023 Art Store. All rights reserved.</p>
+    </footer>
+
+    <!--using some django notation to refernce where the static scripts are-->
+    <script src="{% static 'JS/bannerNav.js' %}"></script>
+    <script src="{% static 'JS/stickyNavBar.js' %}"></script>
+
+</body>
+</html>

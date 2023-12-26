@@ -1,133 +1,15 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Store</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .nav-container {
-            display: flex;
-            justify-content: center;
-            background-color: #0056b3; /* Slightly darker than header background */
-            margin-bottom: 10px;
-        }
-        .nav-container a {
-            padding: 10px 20px;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            margin: 0 10px;
-            transition: background-color 0.3s;
-        }
-        .nav-container a:hover {
-            background-color: #004080; /* Darker color on hover */
-        }
-        section {
-            padding: 20px;
-            display: flex;
-            justify-content: space-evenly;
-            flex-wrap: wrap;
-            border-bottom: 2px solid #ddd; /* Line separating cards */
-            margin-top: -10px; /* Move cards closer to the header */
-        }
-        .card {
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 10px;
-            padding: 15px;
-            text-align: center;
-            width: 300px;
-            min-height: 150px; /* Adjust the minimum height */
-            transition: box-shadow 0.3s; /* Add transition for smooth effect */
-            position: relative;
-            overflow: hidden;
-        }
-        .card a {
-            text-decoration: none;
-            color: #333; /* Set the text color for the link within the card */
-            display: block;
-            height: 100%;
-        }
-        .card:hover {
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Shadow on hover */
-        }
-        footer {
-            background-color: #007bff;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-        input[type="text"] {
-            padding: 10px;
-            width: 300px;
-            border: none;
-            border-radius: 5px;
-            margin-bottom: 10px; /* Add margin to create space between search bar and buttons */
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #fff;
-            color: #007bff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: space-evenly;
-        }
-        li {
-            margin: 0 10px;
-        }
 
-        .promotional-banner {
-             overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            display: flex;
-            align-items: center; /* Align buttons vertically in the middle */
-        }       
-        .banner-container {
-            width: 100%; /* Full width of the parent */
-            overflow: hidden;
-        }
-        .banners {
-            display: flex;
-            width: 300%; /* Adjusted to accommodate three banners */
-            transition: transform 0.5s ease;
-        }
-        .banner-text {
-            flex: 0 0 33.333%; /* Each banner takes up one-third of the container */
-        }
-        .banner-button {
-            background-color: #007bff;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            margin: 0 10px; /* Add spacing between buttons and banners */
-        }
-    </style>
+    <!--using some django notation to refernce where the homePage CSS is; will do this many times when referencing a directory-->
+    <link rel="stylesheet" href="{% static 'CSS/homePageStyles.css' %}">
+
 </head>
 <body>
     <header>
@@ -135,15 +17,18 @@
         <p>Discover and buy all your artwork needs!</p>
 
         <form action="#" method="get">
-            <input type="text" placeholder="Search all supplies...">
+            <input type="text" id="search-bar" placeholder="Search all supplies...">
             <button type="submit">Search</button>
         </form>
         
         <!-- Horizontal Navigation Menu -->
-        <div class="nav-container">
+        <div class="nav-container" id="navbar">
             <a href="paints">Paints</a>
             <a href="canvasses">Canvasses</a>
+            <a href="papers">Papers</a>
             <a href="brushes">Brushes</a>
+            <a href="scultping">Sculpting</a>
+            <a href="officeSupp">Office Supplies</a>
             <a href="drawEssentials">Drawing Essentials</a>
         </div>
 
@@ -156,13 +41,13 @@
             <div class="banner-container">
                 <div class="banners">
                     <div class="banner-text">
-                        <img src="placeholder1.jpg" alt="Banner 1">
+                        <img src= "{% static 'imgs/tempBanner1.png' %}" alt="Banner 1">
                     </div>
                     <div class="banner-text">
-                        <img src="placeholder2.jpg" alt="Banner 2">
+                        <img src= "{% static 'imgs/tempBanner2.png' %}" alt="Banner 2">
                     </div>
                     <div class="banner-text">
-                        <img src="placeholder3.jpg" alt="Banner 3">
+                        <img src= "{% static 'imgs/tempBanner3.png' %}" alt="Banner 3">
                     </div>
                 </div>
             </div>
@@ -171,13 +56,12 @@
             <button class="banner-button" onclick="scrollBanners('right')">&#9654;</button>
 
         </div>
-
-
     </header>
 
-
-    <!-- Featured Items Cards -->
+    <!-- Featured Item Cards -->
+    <h2 style="text-align: center;">Featured Items</h2>
     <section>
+
         <div class="card">
             <a href="toSpecifiedFeaturedPaintSet">
                 <h2>Featured Paint Set</h2>
@@ -209,6 +93,109 @@
                 <button>View Details</button>
             </a>
         </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedPaintSet">
+                <h2>Featured Paint Set</h2>
+                <p>High-quality paints for vibrant artwork.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedCanvas">
+                <h2>Canvas Collection</h2>
+                <p>Explore our premium canvasses for your masterpieces.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedBrush">
+                <h2>Artist Brushes</h2>
+                <p>Find the perfect brushes for your artistic needs.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedDrawingEssential">
+                <h2>Drawing Essentials</h2>
+                <p>Discover essential drawing supplies for your projects.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+    </section>
+
+    <!-- Clearnace Item Cards -->
+    <h2 style="text-align: center;">Clearance Items</h2>
+    <section>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedPaintSet">
+                <h2>Featured Paint Set</h2>
+                <p>High-quality paints for vibrant artwork.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedCanvas">
+                <h2>Canvas Collection</h2>
+                <p>Explore our premium canvasses for your masterpieces.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedBrush">
+                <h2>Artist Brushes</h2>
+                <p>Find the perfect brushes for your artistic needs.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedDrawingEssential">
+                <h2>Drawing Essentials</h2>
+                <p>Discover essential drawing supplies for your projects.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedPaintSet">
+                <h2>Featured Paint Set</h2>
+                <p>High-quality paints for vibrant artwork.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedCanvas">
+                <h2>Canvas Collection</h2>
+                <p>Explore our premium canvasses for your masterpieces.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedFeaturedBrush">
+                <h2>Artist Brushes</h2>
+                <p>Find the perfect brushes for your artistic needs.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
+        <div class="card">
+            <a href="toSpecifiedDrawingEssential">
+                <h2>Drawing Essentials</h2>
+                <p>Discover essential drawing supplies for your projects.</p>
+                <button>View Details</button>
+            </a>
+        </div>
+
     </section>
 
     <footer>
@@ -216,24 +203,11 @@
 
         <p>&copy; 2023 Art Store. All rights reserved.</p>
     </footer>
-    <script>
-        // JavaScript for banner navigation
-        let currentIndex = 0;
-        const bannerContainer = document.querySelector('.banners');
-        const totalBanners = document.querySelectorAll('.banner-text').length;
 
-        function scrollBanners(direction) {
-            const bannerWidth = bannerContainer.offsetWidth / totalBanners;
+    <!--using some django notation to refernce where the static scripts are-->
+    <script src="{% static 'JS/bannerNav.js' %}"></script>
+    <script src="{% static 'JS/stickyNavBar.js' %}"></script>
 
-            if (direction === 'left') {
-                currentIndex = (currentIndex - 1 + totalBanners) % totalBanners;
-            } else if (direction === 'right') {
-                currentIndex = (currentIndex + 1) % totalBanners;
-            }
 
-            const translateValue = -currentIndex * bannerWidth;
-            bannerContainer.style.transform = `translateX(${translateValue}px)`;
-        }
-    </script>
 </body>
 </html>
