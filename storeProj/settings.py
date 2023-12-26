@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -136,3 +138,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#below is for admin settings when urls is /admin
+#we are using jazzmin(used pip install django-jazzmin)
+JAZZMIN_SETTINGS = {
+    'site_header': "Art Store",
+    'site_brand': "Discover and buy all your artwork needs!",
+    #'site_logo': "Art Store",  <--this can be path to an image
+}
