@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'jazzmin',
+    'jazzmin', #installed jazzmin
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     #my apps
     'core',
+    'userauths',
 
 ]
 
@@ -143,6 +144,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #we are using jazzmin(used pip install django-jazzmin)
 JAZZMIN_SETTINGS = {
     'site_header': "Art Store",
-    'site_brand': "Discover and buy all your artwork needs!",
+    'site_brand': "Art Store",
     #'site_logo': "Art Store",  <--this can be path to an image
 }
+
+#this is so django can differentiate between the new user model we created in userauths
+#Below says our personalized auth users are at that directory; automatically goes to models in that dir. and looks for class User
+#we MUST NOT create another User model, problems when having multiple User in same dir.
+AUTH_USER_MODEL = 'userauths.User' 
