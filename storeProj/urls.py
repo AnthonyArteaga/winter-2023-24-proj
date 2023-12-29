@@ -22,7 +22,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path("", include("core.urls")),
+    path("user/",include("userauths.urls")), #anything with a url starting with "user/" will be handled by userauths app
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

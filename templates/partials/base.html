@@ -37,16 +37,19 @@
 
     </header>
 
-    {% block content%}
+    {% block content %} 
+    
+    
+    {% endblock content %}
 
     <!--if an html file extends this base, this header and footer will be used, all we need to focus on is the body
     
-        To extend this html, our first line MUST be: {% extends 'partials/base.html' %}
+        To extend this html, our first line MUST be: { % extends 'partials/base.html' % }
 
         only then can we type in the start and end blocks in the new html to tell the program where it is
     -->
 
-    {% endblock content%}
+    
 
     <footer>
         <p>Thank you for choosing us. We appreciate your business and look forward to serving you.</p>

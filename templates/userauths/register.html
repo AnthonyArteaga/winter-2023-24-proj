@@ -1,0 +1,16 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <center>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            {{form}} <!--uses the same key name from the "context" map in userauths.views-->
+
+            <button type="submit">Register</button>
+        </form>
+    </center>
+
+{% endblock content %}
