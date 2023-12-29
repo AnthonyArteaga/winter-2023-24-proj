@@ -10,6 +10,7 @@ def registerView(request):
 
     if request.method == "POST":
         form = UserRegistrationForm(request.POST)
+        
         if form.is_valid(): #checks if form has no errors in it
             newUser = form.save()  #user is saved to the data base, can be seen with admin POV
             username = form.cleaned_data['username']
